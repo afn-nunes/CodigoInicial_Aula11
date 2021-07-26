@@ -1,9 +1,9 @@
 package classes;
 
-public class Motorista extends Pessoa{
+public class Motorista extends Pessoa implements Acelerador{
     private int matricula;
     private String habilitacao;
-    private Carro veiculoAtual;
+    private Carro veiculo;
 
     public int getMatricula() {
         return matricula;
@@ -20,10 +20,10 @@ public class Motorista extends Pessoa{
     }
 
     public Carro getVeiculoAtual() {
-        return veiculoAtual;
+        return veiculo;
     }
     public void setVeiculoAtual(Carro veiculoAtual) {
-        this.veiculoAtual = veiculoAtual;
+        this.veiculo = veiculoAtual;
     }
 
     public Motorista(String nome, String cpf) {
@@ -41,4 +41,20 @@ public class Motorista extends Pessoa{
         String cumprimentoInicial = super.cumprimentar(outraPessoa);
         return String.format("%s Meu nome é %s e serei seu motorista de hoje!", cumprimentoInicial, getNome());
     }
+
+    @Override
+    public void acelerar(int limite){
+        veiculo.acelerar(limite);
+    }
+    @Override
+    public void acelerar() {
+        veiculo.acelerar();     
+    }
+
+    @Override
+    public int getVelocidadeAtual() {
+        return veiculo.getVelocidadeAtual();
+    }
+
+
 }
