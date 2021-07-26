@@ -1,5 +1,7 @@
 package classes;
 
+import interfaces.Acelerador;
+
 public class Motorista extends Pessoa implements Acelerador{
     private int matricula;
     private String habilitacao;

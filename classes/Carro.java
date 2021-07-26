@@ -1,11 +1,10 @@
 package classes;
 
 import exceptions.PlacaInvalidaException;
+import interfaces.Acelerador;
 
 public class Carro implements Acelerador{
     private String placa;
-    private String letrasPlaca;
-    private int numerosPlaca;
     private int numChassi;
     private int velocidadeAtual;
     private Motorista motorista;
@@ -32,13 +31,16 @@ public class Carro implements Acelerador{
     }
 
     public void setPlaca(String placa) throws PlacaInvalidaException{
-        if(placa != null && placa.length() == 7 && placa.matches("[A-Z]{3}\\d{4}")){
-            this.letrasPlaca = placa.substring(0,3);
-            this.numerosPlaca = Integer.parseInt(placa.substring(0,3));
-            this.placa = placa;
-        }else{
+        if(placa == null){
+            throw new PlacaInvalidaException("O valor da placa não pode ser nulo");
+        }
+        if (placa.length() != 7){
+            throw new PlacaInvalidaException("A placa deve ter 7 caracteres");
+        } 
+        if (!placa.matches("[A-Z]{3}\\d{4}")){
             throw new PlacaInvalidaException();
         }
+        this.placa = placa;
     }
 
     public int getNumChassi() {

@@ -1,9 +1,9 @@
 package programa;
 
-import classes.Acelerador;
 import classes.Carro;
 import classes.Motorista;
 import exceptions.PlacaInvalidaException;
+import interfaces.Acelerador;
 /**
  * App
  */
@@ -19,6 +19,7 @@ public class App {
             aceleradores[2] = mot;
         } catch (PlacaInvalidaException e) {
             e.printStackTrace();
+            return;
         }
         for (Acelerador acelerador : aceleradores) {
             acelerador.acelerar();
