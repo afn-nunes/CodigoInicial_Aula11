@@ -2,8 +2,9 @@ package classes;
 
 import exceptions.PlacaInvalidaException;
 import interfaces.Acelerador;
+import interfaces.Autenticavel;
 
-public class Carro implements Acelerador{
+public class Carro implements Acelerador, Autenticavel{
     private String placa;
     private int numChassi;
     private int velocidadeAtual;
@@ -69,5 +70,17 @@ public class Carro implements Acelerador{
         this.motorista = motorista;
         motorista.setVeiculoAtual(this);
     }
+
+    @Override
+    public String obterCredenciais() {
+        return getPlaca();
+    }
+
+    @Override
+    public String toString() {
+        return getPlaca();
+    }
+
+    
     
 }

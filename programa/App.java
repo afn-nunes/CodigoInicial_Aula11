@@ -1,30 +1,26 @@
 package programa;
 
 import classes.Carro;
+import classes.Liquidificador;
 import classes.Motorista;
 import exceptions.PlacaInvalidaException;
 import interfaces.Acelerador;
-/**
- * App
- */
+
 public class App {
 
-    public static void main(String[] args) {
-        Acelerador[] aceleradores = new Acelerador[3];
-        Motorista mot = new Motorista("André", "103357");
+    public static void main(String[] args) throws PlacaInvalidaException{
+        Acelerador[] aceleradores = new Acelerador[4];
+        Motorista mot = new Motorista("André", "10335723730");
 
-        try {
-            aceleradores[0] = new Carro("ABC1234", 3232423, mot);
-            aceleradores[1] = new Carro("ABC1234", 3232423, new Motorista("Maria", "00962"));
-            aceleradores[2] = mot;
-        } catch (PlacaInvalidaException e) {
-            e.printStackTrace();
-            return;
-        }
+        aceleradores[0] = new Carro("ABC1234", 123, new Motorista("João", "12345678900"));
+        aceleradores[1] = new Carro("KVJ0399", 456,  mot);
+        aceleradores[2] = mot;
+        aceleradores[3] = new Liquidificador();
+        
         for (Acelerador acelerador : aceleradores) {
             acelerador.acelerar();
-            System.out.printf("Chamada do método em objeto do tipo %s:", acelerador.getClass().getSimpleName());
-            System.out.printf("  -  Velocidade atual: %d\n", acelerador.getVelocidadeAtual());
+            System.out.printf("Chamada do método em objeto do tipo %s - ", acelerador.getClass().getSimpleName());
+            System.out.printf("Velocidade atual: %s\n", acelerador.getVelocidadeAtual());
         }
     }
 }

@@ -1,8 +1,9 @@
 package classes;
 
 import interfaces.Acelerador;
+import interfaces.Autenticavel;
 
-public class Motorista extends Pessoa implements Acelerador{
+public class Motorista extends Pessoa implements Acelerador, Autenticavel{ 
     private int matricula;
     private String habilitacao;
     private Carro veiculo;
@@ -43,20 +44,29 @@ public class Motorista extends Pessoa implements Acelerador{
         String cumprimentoInicial = super.cumprimentar(outraPessoa);
         return String.format("%s Meu nome é %s e serei seu motorista de hoje!", cumprimentoInicial, getNome());
     }
-
-    @Override
-    public void acelerar(int limite){
-        veiculo.acelerar(limite);
-    }
     @Override
     public void acelerar() {
-        veiculo.acelerar();     
+        veiculo.acelerar(); 
     }
 
     @Override
-    public int getVelocidadeAtual() {
-        return veiculo.getVelocidadeAtual();
+    public void acelerar(int limite) {
+       veiculo.acelerar(limite);        
     }
 
+    @Override
+    public int getVelocidadeAtual(){
+        return veiculo.getVelocidadeAtual();
+    }
+    
+    @Override
+    public String obterCredenciais() {
+        return String.format("%s-%d",getCpf(), getMatricula());
+    }
+    @Override
+    public String toString() {
+        return String.format("Motorista: %s\n habilitacao: %s \n matricula: %s \n veiculo: %s\n", getNome(), getHabilitacao(), getMatricula(), getVeiculoAtual());
+    }
 
+    
 }
